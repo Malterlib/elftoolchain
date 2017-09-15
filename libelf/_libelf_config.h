@@ -162,7 +162,17 @@
 
 #if defined(__linux__)
 
-#include "native-elf-format.h"
+#if __i386__
+#define	ELFTC_CLASS	ELFCLASS32
+#define	ELFTC_ARCH	EM_386
+#define	ELFTC_BYTEORDER	ELFDATA2LSB
+#elif __x86_64__
+#define	ELFTC_CLASS	ELFCLASS64
+#define	ELFTC_ARCH	EM_X86_64
+#define	ELFTC_BYTEORDER	ELFDATA2LSB
+#else
+#error "Implement this"
+#endif
 
 #define	LIBELF_ARCH		ELFTC_ARCH
 #define	LIBELF_BYTEORDER	ELFTC_BYTEORDER

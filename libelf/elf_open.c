@@ -41,7 +41,7 @@ ELFTC_VCSID("$Id$");
 Elf *
 elf_open(int fd)
 {
-	if (LIBELF_PRIVATE(version) == EV_NONE) {
+	if (LIBELF_PRIVATE_MUTABLE(version) == EV_NONE) {
 		LIBELF_SET_ERROR(SEQUENCE, 0);
 		return (NULL);
 	}
@@ -57,7 +57,7 @@ elf_open(int fd)
 Elf *
 elf_openmemory(char *image, size_t sz)
 {
-	if (LIBELF_PRIVATE(version) == EV_NONE) {
+	if (LIBELF_PRIVATE_MUTABLE(version) == EV_NONE) {
 		LIBELF_SET_ERROR(SEQUENCE, 0);
 		return (NULL);
 	}

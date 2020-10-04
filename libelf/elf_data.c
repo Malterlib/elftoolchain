@@ -203,7 +203,7 @@ elf_newdata(Elf_Scn *s)
 	d->d_data.d_off = (uint64_t) ~0;
 	d->d_data.d_size = 0;
 	d->d_data.d_type = ELF_T_BYTE;
-	d->d_data.d_version = LIBELF_PRIVATE(version);
+	d->d_data.d_version = LIBELF_PRIVATE_MUTABLE(version);
 
 	(void) elf_flagscn(s, ELF_C_SET, ELF_F_DIRTY);
 

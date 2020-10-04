@@ -41,7 +41,7 @@ elf_begin(int fd, Elf_Cmd c, Elf *a)
 
 	e = NULL;
 
-	if (LIBELF_PRIVATE(version) == EV_NONE) {
+	if (LIBELF_PRIVATE_MUTABLE(version) == EV_NONE) {
 		LIBELF_SET_ERROR(SEQUENCE, 0);
 		return (NULL);
 	}

@@ -35,7 +35,7 @@ elf_version(unsigned int v)
 {
 	unsigned int old;
 
-	if ((old = LIBELF_PRIVATE(version)) == EV_NONE)
+	if ((old = LIBELF_PRIVATE_MUTABLE(version)) == EV_NONE)
 		old = EV_CURRENT;
 
 	if (v == EV_NONE)
@@ -45,6 +45,6 @@ elf_version(unsigned int v)
 		return EV_NONE;
 	}
 
-	LIBELF_PRIVATE(version) = v;
+	LIBELF_PRIVATE_MUTABLE(version) = v;
 	return (old);
 }

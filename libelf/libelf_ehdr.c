@@ -96,10 +96,10 @@ _libelf_load_extended(Elf *e, int ec, uint64_t shoff, uint16_t phnum,
 		eh->e_ident[EI_MAG3] = ELFMAG3;				\
 		eh->e_ident[EI_CLASS] = ELFCLASS##SZ;			\
 		eh->e_ident[EI_DATA]  = ELFDATANONE;			\
-		eh->e_ident[EI_VERSION] = LIBELF_PRIVATE(version) & 0xFFU; \
+		eh->e_ident[EI_VERSION] = LIBELF_PRIVATE_MUTABLE(version) & 0xFFU; \
 		eh->e_machine = EM_NONE;				\
 		eh->e_type    = ELF_K_NONE;				\
-		eh->e_version = LIBELF_PRIVATE(version);		\
+		eh->e_version = LIBELF_PRIVATE_MUTABLE(version);		\
 	} while (/* CONSTCOND */ 0)
 
 void *

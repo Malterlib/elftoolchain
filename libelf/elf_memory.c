@@ -33,7 +33,7 @@ ELFTC_VCSID("$Id$");
 Elf *
 elf_memory(char *image, size_t sz)
 {
-	if (LIBELF_PRIVATE(version) == EV_NONE) {
+	if (LIBELF_PRIVATE_MUTABLE(version) == EV_NONE) {
 		LIBELF_SET_ERROR(SEQUENCE, 0);
 		return (NULL);
 	}

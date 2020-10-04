@@ -77,7 +77,7 @@ _libelf_memory(unsigned char *image, size_t sz, int reporterror)
 
 		if (error != ELF_E_NONE) {
 			if (reporterror) {
-				LIBELF_PRIVATE(error) = LIBELF_ERROR(error, 0);
+				LIBELF_PRIVATE_MUTABLE(error) = LIBELF_ERROR(error, 0);
 				_libelf_release_elf(e);
 				return (NULL);
 			}

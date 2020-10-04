@@ -63,10 +63,10 @@ elf_errmsg(int error)
 	int oserr;
 
 	if (error == ELF_E_NONE &&
-	    (error = LIBELF_PRIVATE(error)) == 0)
+	    (error = LIBELF_PRIVATE_MUTABLE(error)) == 0)
 	    return NULL;
 	else if (error == -1)
-	    error = LIBELF_PRIVATE(error);
+	    error = LIBELF_PRIVATE_MUTABLE(error);
 
 	oserr = error >> LIBELF_OS_ERROR_SHIFT;
 	error &= LIBELF_ELF_ERROR_MASK;
@@ -74,10 +74,10 @@ elf_errmsg(int error)
 	if (error < ELF_E_NONE || error >= ELF_E_NUM)
 		return _libelf_errors[ELF_E_NUM];
 	if (oserr) {
-		(void) snprintf((char *) LIBELF_PRIVATE(msg),
-		    sizeof(LIBELF_PRIVATE(msg)), "%s: %s",
+		(void) snprintf((char *)  LIBELF_PRIVATE_MUTABLE(msg),
+		    sizeof(LIBELF_PRIVATE_MUTABLE(msg)), "%s: %s",
 		    _libelf_errors[error], strerror(oserr));
-		return (const char *)&LIBELF_PRIVATE(msg);
+		return (const char *)&LIBELF_PRIVATE_MUTABLE(msg);
 	}
 	return _libelf_errors[error];
 }

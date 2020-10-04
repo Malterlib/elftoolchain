@@ -775,7 +775,7 @@ _libelf_write_scn(Elf *e, unsigned char *nf, struct _Elf_Extent *ex)
 
 			if ((uint64_t) rc < sh_off + d->d_off)
 				(void) memset(nf + rc,
-				    LIBELF_PRIVATE(fillchar),
+				    LIBELF_PRIVATE_MUTABLE(fillchar),
 				    (size_t) (sh_off + d->d_off -
 					(uint64_t) rc));
 			rc = (off_t) (sh_off + d->d_off);
@@ -811,7 +811,7 @@ _libelf_write_scn(Elf *e, unsigned char *nf, struct _Elf_Extent *ex)
 
 		if ((uint64_t) rc < sh_off + d->d_off)
 			(void) memset(nf + rc,
-			    LIBELF_PRIVATE(fillchar),
+			    LIBELF_PRIVATE_MUTABLE(fillchar),
 			    (size_t) (sh_off + d->d_off - (uint64_t) rc));
 
 		rc = (off_t) (sh_off + d->d_off);
@@ -1051,7 +1051,7 @@ _libelf_write_elf(Elf *e, off_t newsize, struct _Elf_Extent_List *extents)
 
 		/* Fill inter-extent gaps. */
 		if (ex->ex_start > (size_t) rc)
-			(void) memset(newfile + rc, LIBELF_PRIVATE(fillchar),
+			(void) memset(newfile + rc, LIBELF_PRIVATE_MUTABLE(fillchar),
 			    (size_t) (ex->ex_start - (uint64_t) rc));
 
 		switch (ex->ex_type) {

@@ -35,7 +35,7 @@ elf_errno(void)
 {
 	int old;
 
-	old = LIBELF_PRIVATE(error);
-	LIBELF_PRIVATE(error) = 0;
+	old = LIBELF_PRIVATE_MUTABLE(error);
+	LIBELF_PRIVATE_MUTABLE(error) = 0;
 	return (old & LIBELF_ELF_ERROR_MASK);
 }

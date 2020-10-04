@@ -45,15 +45,22 @@ struct _libelf_globals {
 	int		libelf_arch;
 	unsigned int	libelf_byteorder;
 	int		libelf_class;
+};
+
+extern const struct _libelf_globals _libelf;
+
+#define	LIBELF_PRIVATE(N)	(_libelf.libelf_##N)
+
+struct _libelf_globals_mutable {
 	int		libelf_error;
 	int		libelf_fillchar;
 	unsigned int	libelf_version;
 	unsigned char	libelf_msg[LIBELF_MSG_SIZE];
 };
 
-extern struct _libelf_globals _libelf;
+extern __thread struct _libelf_globals_mutable _libelf_mutable;
 
-#define	LIBELF_PRIVATE(N)	(_libelf.libelf_##N)
+#define	LIBELF_PRIVATE_MUTABLE(N)	(_libelf_mutable.libelf_##N)
 
 #define	LIBELF_ELF_ERROR_MASK			0xFF
 #define	LIBELF_OS_ERROR_SHIFT			8
@@ -62,7 +69,7 @@ extern struct _libelf_globals _libelf;
 	((O) << LIBELF_OS_ERROR_SHIFT))
 
 #define	LIBELF_SET_ERROR(E, O) do {					\
-		LIBELF_PRIVATE(error) = LIBELF_ERROR(ELF_E_##E, (O));	\
+		LIBELF_PRIVATE_MUTABLE(error) = LIBELF_ERROR(ELF_E_##E, (O));	\
 	} while (/* CONSTCOND */ 0)
 
 #define	LIBELF_ADJUST_AR_SIZE(S)	(((S) + 1U) & ~1U)

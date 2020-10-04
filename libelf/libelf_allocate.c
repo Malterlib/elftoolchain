@@ -58,7 +58,7 @@ _libelf_allocate_elf(void)
 	e->e_cmd         = ELF_C_NULL;
 	e->e_fd          = -1;
 	e->e_kind        = ELF_K_NONE;
-	e->e_version     = LIBELF_PRIVATE(version);
+	e->e_version     = LIBELF_PRIVATE_MUTABLE(version);
 
 	return (e);
 }

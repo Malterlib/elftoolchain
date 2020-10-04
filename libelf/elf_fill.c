@@ -37,5 +37,5 @@ ELFTC_VCSID("$Id$");
 void
 elf_fill(int fill)
 {
-	LIBELF_PRIVATE(fillchar) = fill;
+	LIBELF_PRIVATE_MUTABLE(fillchar) = fill;
 }

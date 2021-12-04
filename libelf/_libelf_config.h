@@ -170,6 +170,11 @@
 #define	ELFTC_CLASS	ELFCLASS64
 #define	ELFTC_ARCH	EM_X86_64
 #define	ELFTC_BYTEORDER	ELFDATA2LSB
+
+#elif __aarch64__
+#define	ELFTC_CLASS	ELFCLASS64
+#define	ELFTC_ARCH	EM_AARCH64
+#define	ELFTC_BYTEORDER	ELFDATA2LSB
 #else
 #error "Implement this"
 #endif

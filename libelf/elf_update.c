@@ -731,6 +731,8 @@ _libelf_write_scn(Elf *e, unsigned char *nf, struct _Elf_Extent *ex)
 	uint64_t sh_off, sh_size;
 	size_t fsz, msz, nobjects;
 
+  (void)elftype;
+
 	assert(ex->ex_type == ELF_EXTENT_SECTION);
 
 	s = ex->ex_desc;
@@ -961,6 +963,8 @@ _libelf_write_shdr(Elf *e, unsigned char *nf, struct _Elf_Extent *ex)
 	Elf64_Ehdr *eh64;
 	size_t fsz, msz, nscn;
 	Elf_Data dst, src;
+
+  (void)shoff;
 
 	assert(ex->ex_type == ELF_EXTENT_SHDR);
 

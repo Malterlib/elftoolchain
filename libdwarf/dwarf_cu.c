@@ -114,8 +114,6 @@ int
 dwarf_set_cu_from_die(Dwarf_Debug dbg, Dwarf_Die die,
     Dwarf_Error *error)
 {
-	Dwarf_CU cu;
-
 	if (dbg == NULL) {
 		DWARF_SET_ERROR(dbg, error, DW_DLE_ARGUMENT);
 		return (DW_DLV_ERROR);
@@ -127,7 +125,6 @@ dwarf_set_cu_from_die(Dwarf_Debug dbg, Dwarf_Die die,
 		DWARF_SET_ERROR(dbg, error, DW_DLE_NO_ENTRY);
 		return (DW_DLV_NO_ENTRY);
 	}
-	cu = dbg->dbg_cu_current;
 
 	return (DW_DLV_OK);
 }

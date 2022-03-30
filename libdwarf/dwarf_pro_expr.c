@@ -66,6 +66,7 @@ _dwarf_expr_into_block(Dwarf_P_Expr expr, Dwarf_Error *error)
 	struct _Dwarf_P_Expr_Entry *ee;
 	Dwarf_Debug dbg;
 	int len, pos, ret;
+  (void)ret;
 
 	dbg = expr->pe_dbg;
 
